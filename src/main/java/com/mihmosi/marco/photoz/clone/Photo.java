@@ -8,6 +8,8 @@ public class Photo {
     @NotEmpty
     private String fileName;
 
+    private byte[] data;
+
     public Photo() {
     }
 
@@ -18,6 +20,14 @@ public class Photo {
 
     //raw photo
 
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
 
     public String getId() {
         return id;

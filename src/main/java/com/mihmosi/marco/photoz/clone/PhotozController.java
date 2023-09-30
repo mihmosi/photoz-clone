@@ -4,8 +4,10 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -39,10 +41,14 @@ public class PhotozController {
     }
 
     @PostMapping("/photoz")
-    public Photo create(@RequestBody @Valid Photo photo) {
+    public Photo create(@RequestPart("data") MultipartFile file) throws IOException {
+        Photo photo = new Photo();
         photo.setId(UUID.randomUUID().toString());
+        photo.setFileName(file.getOriginalFilename());
+        photo.setData(file.getBytes());
         db.put(photo.getId(), photo);
         return photo;
     }
-
+  //TODO https://www.youtube.com/watch?v=QuvS_VLbGko time = 38.28
+    // https://gist.github.com/marcobehlerjetbrains
 }
