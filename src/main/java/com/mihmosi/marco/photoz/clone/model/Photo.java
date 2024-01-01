@@ -1,9 +1,10 @@
 package com.mihmosi.marco.photoz.clone.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.validation.constraints.NotEmpty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
+
+import javax.validation.constraints.NotEmpty;
 
 @Table("PHOTOZ")
 public class Photo {
